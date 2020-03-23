@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>react developement</title>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+  </head>
+  <body>
+    <div class="parent" id="parent">
+
+    </div>
+  </body>
+  <script type="text/babel">
+    class App extends React.Component {
+      state={
+        names:["tony",'uzumaki']
+
+      }
+
+      handleClick = (e) =>{
+        console.log("hello from server side");
+        console.log(this.state);
+      }
+
+      handleSubmit = (e) =>{
+       e.preventDefault();
+       console.log(this.state);
+       //console.log(e);
+      var nameInput = document.getElementById("name").value;
+      var names = this.state.names;
+      names = [ ...names , nameInput];
+      console.log(names);
+      this.setState({names});
+
+      }
+
+      handleChange = (e) =>{
+      //  this.setState({ name:e.target.value});
+      }
+      render(){
+        return (
+            < div className="disco">
+                hell the re from react...js!
+                <button type="button" onClick={ this.handleClick } >click here</button>
+
+                <form onSubmit={this.handleSubmit}>
+                <input type="text" id="name" onChange={ this.handleChange } />
+                <button type="submit" >suubmit</button>
+
+                </form>
+            </div>
+        );
+      }
+    }
+    ReactDOM.render(<App />, document.getElementById('parent'));
+  </script>
+
+</html>
